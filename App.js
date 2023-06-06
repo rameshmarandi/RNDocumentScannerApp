@@ -58,7 +58,7 @@ export default class App extends Component {
     setTimeout(() =>{
 
 this.setState({isLoggedIn: true});
-    },2000)
+    },6000)
     // let session = await getUserSession();
     // store.dispatch(getTokenApi());
     // setTimeout(() => {

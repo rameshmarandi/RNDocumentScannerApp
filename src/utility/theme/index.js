@@ -31,21 +31,21 @@ const regex = {
 };
 const color = {
   primary: '#2F3B75', // ok //F99D27
-  seletedBtn :'#303254',
-  secondary : "#E66EA7",
-  dimBlack: "#353535",
-  dimGray : "#828282",
-  lableColor:"#666666",
-  white:"#FFFFFF",
-  outlineColor:'#999999',
-  placeholder: '#C0C0C0',
+  activeText:"#181818",
+  textColor:"#656565",
+  backgroundColor:"#f9f9f9",
+  inActiveText:"#b1b6bb",
 };
 
 const font = {
-  regular: 'ARIALLGT',
-  semiBold: 'Helvetica',
-  bold: 'Helvetica-Bold',
-  extrabold: 'Muli-ExtraBold',
+  regular: 'Poppins Regular 400',
+  semiBold: 'Poppins SemiBold 600',
+  medium:"Poppins Medium 500",
+  bold: 'Poppins Bold 700',
+  boldItalic : 'Poppins Bold Italic 700',
+  light :"Poppins Light 300",
+  lightItalic :"Poppins Light Italic 300",
+  thin :"Poppins Thin 250"
 };
 
 const fontSizes = {
