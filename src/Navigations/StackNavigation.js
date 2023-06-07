@@ -2,7 +2,7 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {HomePage} from '../Screens';
+import {HomePage , CaptureImage} from '../Screens';
 // import TabNav from './TabNavigation';
 
 const RootStack = createNativeStackNavigator();
@@ -34,6 +34,11 @@ function HomeNavigation(props) {
         name="HomePage"
         component={HomePage}
         options={{headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="CaptureImage"
+        component={CaptureImage}
+        // options={{headerShown: false}}
       />
 
       {/* <HomeStack.Screen

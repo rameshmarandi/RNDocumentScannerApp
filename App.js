@@ -1,5 +1,5 @@
 import React, {Component, useEffect} from 'react';
-import {Animated,Image, StatusBar, Text,LogBox, View} from 'react-native';
+import {Animated, Image, StatusBar, Text, LogBox, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import StackNavigation, {
   AuthNavigation,
@@ -10,43 +10,9 @@ import {PersistGate} from 'redux-persist/integration/react';
 import theme from './src/utility/theme';
 import {Provider as MenuProvider} from 'react-native-paper';
 import {TouchableOpacity} from 'react-native';
+import Loader from './src/components/Loader';
+import Lottie from 'lottie-react-native';
 LogBox.ignoreAllLogs(true);
-
-function AnimatedSlash() {
-  // const width = new Animated.Value(0);
-  // const height = new Animated.Value(0);
-
-  // useEffect(() => {
-  //   Animated.timing(
-  //     width, // The animated value to drive
-  //     {
-  //       toValue: 100, // Animate to opacity: 1 (opaque)
-  //       duration: 1800, // Make it take a while
-  //       useNativeDriver: false,
-  //     },
-  //   ).start(); // Starts the animation
-  //   Animated.timing(
-  //     height, // The animated value to drive
-  //     {
-  //       toValue: 100, // Animate to opacity: 1 (opaque)
-  //       duration: 1800, // Make it take a while
-  //       useNativeDriver: false,
-  //     },
-  //   ).start(); // Starts the animation
-  // }, []);
-
-  return (
-    <Image
-      source={{uri : "https://t4.ftcdn.net/jpg/03/17/25/45/360_F_317254576_lKDALRrvGoBr7gQSa1k4kJBx7O2D15dc.jpg"}}
-      style={{
-        width: 120,
-        height:120,
-      }}
-      resizeMode='contain'
-    />
-  );
-}
-
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -55,10 +21,9 @@ export default class App extends Component {
     };
   }
   async componentDidMount() {
-    setTimeout(() =>{
-
-this.setState({isLoggedIn: true});
-    },6000)
+    setTimeout(() => {
+      this.setState({isLoggedIn: true});
+    }, 1500);
     // let session = await getUserSession();
     // store.dispatch(getTokenApi());
     // setTimeout(() => {
@@ -93,13 +58,30 @@ this.setState({isLoggedIn: true});
     return (
       <View
         style={{
-          flex:1,
+          flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#1F5DAD',
-        }}>      
-        <Text>sdfsdfsdf</Text>
-        {/* <AnimatedSlash /> */}
+          backgroundColor: '#f9f9f9',
+        }}>
+          <View  
+           style ={{
+            height: '100%',
+            width:"100%",
+            justifyContent:"center",
+            alignItems:"center",
+          }}>
+        <Lottie
+          source={require('./src/assets/splashLoader.json')}
+          style ={{
+            height: '55%',
+            width:"30%",
+            alignSelf:"center"
+          }}
+        
+          autoPlay
+          loop
+        />
+        </View>      
       </View>
     );
   }

@@ -1,48 +1,77 @@
-import {View, Text, SafeAreaView} from 'react-native';
-import React from 'react';
+import {View, Text, SafeAreaView, TouchableOpacity, Image} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  getFontSize,
+  getResHeight,
+  getResWidth,
+  hp,
+  wp,
+} from '../../utility/responsive';
+import DocumentScanner from 'react-native-document-scanner-plugin';
 import theme from '../../utility/theme';
+import {useNavigation} from '@react-navigation/native';
+import {VectorIcon} from '../../components/VectorIcon';
+const HomePage = props => {
+  const [scannedImage, setScannedImage] = useState(null);
+  const navigation = useNavigation();
+  const scanDocument = async () => {
+    // start the document scanner
+    const {scannedImages} = await DocumentScanner.scanDocument({
+      letUserAdjustCrop: true,
+      croppedImageQuality: 100,
+      maxNumDocuments: 24,
+    });
 
-const HomePage = () => {
+    // get back an array with scanned image file paths
+    if (scannedImages.length > 0) {
+      // set the img src, so we can view the first scanned image
+      setScannedImage(scannedImages[0]);
+    }
+  };
+
+  useEffect(() => {
+    // call scanDocument on load
+    // scanDocument()
+  }, []);
+
+  console.log('Image path', scannedImage);
   return (
     <SafeAreaView
       style={{
         flex: 1,
         backgroundColor: '#f9f9f9',
-        // backgroundColor:"#4a90e3",
-        // backgroundColor:"#171c3b",
-        // backgroundColor:"#e6e9f5",
-        // justifyContent: 'center',
-        // alignItems: 'center',
       }}>
       <View
         style={{
-          // flex:2,
           height: 239,
           width: '100%',
           backgroundColor: theme.color.primary,
           borderBottomRightRadius: 100,
           justifyContent: 'center',
         }}>
-        <Text
-          style={{
-            fontSize: 19,
-            color: '#f9f9f9',
-            marginLeft: '5%',
-            fontFamily: theme.font.semiBold,
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('CaptureImage');
           }}>
-          All Documents
-        </Text>
+          <Text
+            style={{
+              fontSize: 19,
+              color: '#f9f9f9',
+              marginLeft: '5%',
+              fontFamily: theme.font.semiBold,
+            }}>
+            All Documents
+          </Text>
+        </TouchableOpacity>
       </View>
-      <Text
-        style={{
-          fontSize: 34,
-          color: '#f9f9f9',
-
-          // color:"#b0b4c5"
-          // color:"#9C27B0"
-        }}>
-        Homepage
-      </Text>
+      <View>
+        <VectorIcon
+          type={'AntDesign'}
+          name={'check'}
+          size={getFontSize(18)}
+          color={'#053C6D'}
+        />
+      </View>
     </SafeAreaView>
   );
 };
